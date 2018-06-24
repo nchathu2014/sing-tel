@@ -1,0 +1,65 @@
+//override progress-bar color
+
+
+.cus{
+
+  &-wrapper{
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  &-progress{
+    background-color: red;
+    height: 50px;
+  }
+}
+
+.progress{
+  &-bar{
+    padding:0;
+  }
+}
+
+.progress {height: 50px;border-radius: 0;  position: relative;}
+
+
+
+.progress span {
+  position: absolute;
+  display: block;
+  width: 100%;
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+

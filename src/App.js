@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import  ProgressBarApp from './components/ProgressBarApp';
 import {fetchProgressBarData} from './api/fetchData';
-import './App.css';
+//import './App.css';
+import './main.scss';
 
 
 
@@ -12,18 +13,51 @@ constructor(props){
     this.state={
         bars:[],
         buttons:[],
-        limit:0
+        limit:0,
+        selectedBar:0,
+        limitStatus:false
     }
 }
 
-handleOnClick(btnValue,barIndex=1){
+    handleBarIndex(selectedBar,barNo){
 
+        this.setState({
+            selectedBar,
+            barNo
+        });
+    }
 
-    var newValue = this.state.bars[barIndex]+btnValue;
-    this.state.bars[barIndex] = newValue;
+handleOnClick(btnValue){
+    let bars = this.state.bars;
+    let barIndex= this.state.selectedBar;
+    let newValue = this.state.bars[barIndex]+btnValue;
+    bars[barIndex] = newValue;
+
+    console.log(this.state.limit,newValue)
+
+    if(this.state.limit < newValue){
+        this.setState({
+            limitStatus: true
+        });
+    }
+    else{
+        this.setState({
+            limitStatus: false
+        });
+    }
+    /*if(this.state.limit > newValue){
+        this.setState({
+            limitStatus: true
+        });
+    }else{
+        this.setState({
+            limitStatus: false
+        });
+    }*/
+
 
     this.setState({
-        bars: this.state.bars
+        bars: bars
     });
 }
 
@@ -46,9 +80,12 @@ handleOnClick(btnValue,barIndex=1){
       <div className="App">
           <ProgressBarApp
               handleOnClick={(btnVal)=>this.handleOnClick(btnVal)}
+              handleBarIndex = {(selectedBar)=>{this.handleBarIndex(selectedBar)}}
+              selectedBar={this.state.selectedBar}
               bars={this.state.bars}
               buttons={this.state.buttons}
-              limit={this.state.limit}
+              limitStatus={this.state.limitStatus}
+              limit = {this.state.limit}
           />
       </div>
     );

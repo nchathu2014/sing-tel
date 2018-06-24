@@ -24,16 +24,30 @@ class ProgressBarApp extends Component {
         }
     }
 */
+
+
+
     handleOnClick(btnValue){
         this.props.handleOnClick(btnValue)
     }
 
 
+    handleBarIndex(selectedBar){
+        console.log("ccc --->"+selectedBar)
+        this.props.handleBarIndex(selectedBar);
+    }
 
     render() {
 
             let renderBars = this.props.bars.map((barValue, index) => {
-                return (<ProgressBar key={index} barValue={barValue}/>);
+                return (
+                    <ProgressBar
+                        key={index}
+                        barValue={barValue}
+                        limitStatus={this.props.limitStatus}
+                        selectedBar={this.props.selectedBar}
+                        barNo = {index}
+                    /> );
             });
 
 
@@ -49,11 +63,12 @@ class ProgressBarApp extends Component {
 
 
         return (
-           <div>
+           <div className="cus-wrapper">
+               <h2>Progress Bars Demo (Limit:{this.props.limit})</h2>
                {renderBars}
                <div className="row">
                    <div className="col-lg-6">
-                       {(this.props.bars && this.props.bars.length > 0) && <DropDown bars={this.props.bars}/>}
+                       {(this.props.bars && this.props.bars.length > 0) && <DropDown bars={this.props.bars} handleBarIndex={(selectedBar)=>this.handleBarIndex(selectedBar)}/>}
                    </div>
                    <div className="col-lg-6">
                        {renderButtons}

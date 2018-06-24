@@ -2,25 +2,24 @@ import React, {Component} from 'react';
 
 class DropDown extends Component {
 
-    constructor(props){
+   /* constructor(props){
         super(props);
-        this.state={
-            selectedBar:0
-        }
-    }
+    }*/
 
     handleBarsSelect(){
         let selectedBar = document.getElementById("barsList").value;
         this.setState({
             selectedBar
-        });
+        },
+            this.props.handleBarIndex(selectedBar));
+
+
 
     }
 
 
 
     render(){
-        console.log(this.state.selectedBar)
         let renderBarsItem = this.props.bars.map((itemVal, index) => {
             return (<option value={index} key={index}>#Progress{index+1}</option>);
         });
