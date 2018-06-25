@@ -2,30 +2,21 @@ import React, {Component} from 'react';
 
 class DropDown extends Component {
 
-   /* constructor(props){
-        super(props);
-    }*/
-
-    handleBarsSelect(){
+    /**
+     * drop down select functionality
+     */
+    handleBarsSelect() {
         let selectedBar = document.getElementById("barsList").value;
-        this.setState({
-            selectedBar
-        },
-            this.props.handleBarIndex(selectedBar));
-
-
-
+        this.props.handleBarIndex(selectedBar)
     }
 
-
-
-    render(){
+    render() {
         let renderBarsItem = this.props.bars.map((itemVal, index) => {
-            return (<option value={index} key={index}>#Progress{index+1}</option>);
+            return (<option value={index} key={index}>#Progress{index + 1}</option>);
         });
-        return(
+        return (
             <div>
-                <select name="barsList" id="barsList" onChange={()=>this.handleBarsSelect()}>
+                <select name="barsList" id="barsList" onChange={() => this.handleBarsSelect()}>
                     {renderBarsItem}
                 </select>
             </div>

@@ -1,6 +1,11 @@
 import axios from "axios";
 
-export function fetchProgressBarData(fetchSuccess,fetchError) {
+/**
+ * fetching bar data from API
+ * @param fetchSuccess
+ * @param fetchError
+ */
+export function fetchProgressBarData(fetchSuccess, fetchError) {
     axios.get('http://pb-api.herokuapp.com/bars')
         .then(function (response) {
             fetchSuccess(response.data);
